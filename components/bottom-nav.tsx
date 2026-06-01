@@ -2,15 +2,14 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Building2, CheckSquare, Bell, Lightbulb, Flame } from 'lucide-react'
+import { Building2, AlertCircle, Calendar, ShieldCheck } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/comunidades', label: 'Comunidades', icon: Building2 },
-  { href: '/tareas', label: 'Tareas', icon: CheckSquare },
-  { href: '/avisos', label: 'Avisos', icon: Bell },
-  { href: '/mejoras', label: 'Mejoras', icon: Lightbulb },
-  { href: '/extintores', label: 'Extintores', icon: Flame },
+  { href: '/incidencias', label: 'Incidencias', icon: AlertCircle },
+  { href: '/planificacion', label: 'Planificación', icon: Calendar },
+  { href: '/extintores', label: 'Contraincendios', icon: ShieldCheck },
 ]
 
 export default function BottomNav() {

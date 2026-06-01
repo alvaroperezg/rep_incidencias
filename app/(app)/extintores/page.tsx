@@ -81,7 +81,7 @@ export default function ExtintoresPage() {
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <h1 className="text-xl font-bold text-foreground">Extintores</h1>
+      <h1 className="text-xl font-bold text-foreground">Contraincendios</h1>
 
       {loading ? (
         Array.from({ length: 3 }).map((_, i) => (

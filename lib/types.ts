@@ -1,7 +1,7 @@
 export type EstadoTarea = 'pendiente' | 'en_curso' | 'completada'
-export type EstadoAviso = 'pendiente' | 'finalizado'
+export type PrioridadIncidencia = 'baja' | 'media' | 'alta'
+export type EstadoMejora = 'pendiente' | 'aprobada' | 'en_ejecucion' | 'completada'
 export type PrioridadMejora = 'baja' | 'media' | 'alta'
-export type EstadoMejora = 'pendiente' | 'en_estudio' | 'aprobada'
 export type EstadoExtintor = 'pendiente' | 'pagado' | 'pasado'
 
 export interface Comunidad {
@@ -19,36 +19,30 @@ export interface Comunidad {
   created_at: string
 }
 
-export interface Tarea {
+export interface Incidencia {
   id: string
   comunidad_id: string | null
   titulo: string
   descripcion: string | null
   estado: EstadoTarea
-  fecha_estimada: string | null
+  prioridad: PrioridadIncidencia | null
+  fotos: string[] | null
+  fecha_parte: string | null
+  fecha_solucion: string | null
   notas: string | null
   created_at: string
   comunidades?: Pick<Comunidad, 'id' | 'nombre'>
 }
 
-export interface Aviso {
-  id: string
-  comunidad_id: string | null
-  descripcion: string
-  estado: EstadoAviso
-  finalizado_at: string | null
-  fotos: string[] | null
-  created_at: string
-  comunidades?: Pick<Comunidad, 'id' | 'nombre'>
-}
-
-export interface Mejora {
+export interface PlanificacionItem {
   id: string
   comunidad_id: string | null
   descripcion: string
   prioridad: PrioridadMejora
   estado: EstadoMejora
   vecino_nombre: string | null
+  fecha_estimada_ejecucion: string | null
+  presupuesto_estimado: number | null
   created_at: string
   comunidades?: Pick<Comunidad, 'id' | 'nombre'>
 }
