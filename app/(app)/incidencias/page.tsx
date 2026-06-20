@@ -34,6 +34,25 @@ function formatDateTime(d: string | null): string {
 const selectCls = 'w-full rounded-xl border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring'
 const textareaCls = 'w-full rounded-xl border border-input bg-card px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring resize-none'
 
+function FotoThumb({ url, index }: { url: string; index: number }) {
+  const [broken, setBroken] = useState(false)
+  if (broken) {
+    return (
+      <div className="w-20 h-20 rounded-xl bg-secondary flex items-center justify-center flex-shrink-0">
+        <ImageIcon className="h-6 w-6 text-muted-foreground" />
+      </div>
+    )
+  }
+  return (
+    <img
+      src={url}
+      alt={`Foto ${index + 1}`}
+      className="w-20 h-20 object-cover rounded-xl flex-shrink-0"
+      onError={() => setBroken(true)}
+    />
+  )
+}
+
 function IncidenciaCard({
   inc,
   showFinalizada = false,
@@ -367,7 +386,7 @@ export default function IncidenciasPage() {
               {selected.fotos && selected.fotos.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {selected.fotos.map((url, i) => (
-                    <img key={i} src={url} alt={`Foto ${i + 1}`} className="w-20 h-20 object-cover rounded-xl" />
+                    <FotoThumb key={i} url={url} index={i} />
                   ))}
                 </div>
               )}
